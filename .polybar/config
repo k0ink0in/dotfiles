@@ -1,0 +1,187 @@
+; Doc: https://github.com/jaagr/polybar
+; Wiki: https://github.com/jaagr/polybar/wiki
+
+[colors]
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+secondary = ${xrdb:secondary}
+underline = ${xrdb:active}
+
+[bar/default]
+height = 32
+offset-y = 0
+top = true
+fixed-center = true 
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+padding-left = 0
+padding-right = 3
+module-margin = 2
+
+font-0 = SFNS Display:size=10;2
+font-1 = FontAwesome:size=10;2
+font-2 = xos4terminus:size=18:weight=bold;2
+font-3 = "Material Design Icons:size=13;2"
+
+modules-left = i3
+modules-center = xwindow
+modules-right = cpu memory spotify volume date powermenu
+
+[bar/center]
+inherit = bar/default
+monitor = DVI-I-1
+modules-right = powermenu
+tray-position = right
+tray-detached = false 
+tray-padding = 0
+
+[bar/left]
+inherit = bar/default
+monitor = HDMI-0
+modules-left = 
+modules-right = cpu memory i3
+
+[bar/right]
+inherit = bar/default
+monitor = DVI-D-0
+modules-left = i3 volume date
+modules-right = 
+padding-left = 3
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+index-sort = true
+enable-click = true
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+format = <label-mode><label-state>
+label-mode-padding = 2
+label-mode-underline = ${colors.underline}
+label-focused = %index%  %icon%
+label-focused-foreground = ${colors.underline}
+label-focused-underline = ${colors.underline}
+label-focused-padding = 2
+label-unfocused = %index%  %icon%
+label-unfocused-padding = 2
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-underline = ${colors.secondary}
+label-visible = %index%  %icon%
+label-visible-underline = ${colors.foreground}
+label-visible-padding = 2
+label-urgent = %index%  %icon%
+label-urgent-foreground = ${colors.background} 
+label-urgent-background = ${colors.underline} 
+label-urgent-underline = ${colors.underline} 
+label-urgent-padding = 2
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.secondary}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <label>
+format-prefix = "  "
+format-underline = ${colors.secondary}
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-underline = ${colors.secondary}
+label = %percentage_used%%
+
+[module/date]
+type = internal/date
+interval = 5
+date = %B %d,
+time = %H:%M
+label =   %date% %time%
+format-underline = ${colors.secondary}
+
+[module/volume]
+type = internal/volume
+format-volume = <ramp-volume>  <label-volume>
+format-muted =  
+label-volume = %percentage%%
+label-volume-underline = ${colors.secondary}
+format-volume-underline = ${colors.secondary}
+label-muted-underline = ${colors.secondary}
+format-muted-underline = ${colors.secondary}
+label-muted = %percentage%%
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+
+[module/wired]
+type = internal/network
+interface = eth0
+format-connected = <label-connected>
+format-connected-underline = ${colors.underline}
+format-disconnected = <label-disconnected>
+label-connected =  %local_ip%
+label-disconnected = 
+
+[module/powermenu]
+type = custom/menu
+label-active-font = 1
+format-spacing = 1
+label-open = 
+label-open-underline = ${colors.secondary}
+label-close = 
+label-close-foreground = #E20049
+label-separator = |
+label-separator-foreground = ${colors.secondary}
+
+menu-0-0 = reboot
+menu-0-0-foreground = #FFCC66
+menu-0-0-exec = reboot
+menu-0-1 = power off
+menu-0-1-foreground = #FFCC66
+menu-0-1-exec = poweroff
+
+[module/spotify]
+type = custom/script
+exec-if = ~/.config/polybar/spotify.sh --isPlaying
+exec = ~/.config/polybar/spotify.sh --title
+click-left = i3-msg workspace 8
+interval = 5
+format=   <label> 
+format-foreground=#00D965
+format-underline = #00D965
+label = %output%
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
