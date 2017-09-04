@@ -1,0 +1,101 @@
+[user]
+  name = Kevin Duplant
+  email = kevin.duplant@maecia.com
+[rerere]
+  enabled = 1
+  autoupdate = 1
+[core]
+  autocrlf = false
+  fileMode = false
+  editor = vim
+  eol = lf
+[push]
+  default = simple
+[color]
+  ui = always
+[color "branch"]
+  current = yellow bold
+  local = green bold
+  remote = cyan bold
+[color "diff"]
+  meta = red
+  frag = blue
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "grep"]
+  linenumber = yellow
+  match = red bold
+  filename = blue bold
+[color "status"]
+  added = green bold
+  changed = yellow bold
+  untracked = red bold
+[pager]
+    diff = diff-so-fancy | less --tabs=4 -RFX
+    show = diff-so-fancy | less --tabs=4 -RFX
+[alias]
+  d  = diff --word-diff
+  ds = diff --stat
+  f  = fetch
+  fo = fetch origin
+  fu = fetch upstream
+  fp = fetch --all --prune
+  t  = tag
+  tp = push origin --tags
+  g  = grep -Iin
+  l  = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -10
+  lo = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -1
+  ls = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --no-merges -10
+  ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -20
+  w  = show -p --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  m  = merge
+  mn = merge --no-ff
+  co = checkout
+  cb = checkout -b
+  la = !git config --list | grep ^alias\\. | cut -c 7- | grep -Ei --color \"$1\" "#"
+  s  = status -s -b
+  b  = branch -va
+  bd = branch -d
+  bm = branch -m
+  bt = branch --set-upstream-to
+  sa = stash apply
+  sc = stash clear
+  sd = stash drop
+  sl = stash list
+  sp = stash pop
+  ss = stash save
+  sw = stash show
+  r  = reset
+  rh = reset HEAD
+  rc = revert
+  cl = clean -f -d -f
+  c  = commit -a -m
+  ca = commit --amend --no-edit
+  a  = add --all
+  ai = add -i
+  cp = cherry-pick
+  pt = push origin --tags
+  ps = push -v
+  pl = pull -v
+  pb = pull --rebase
+  rf = reflog -20
+  rb = rebase -i
+  rmc = rm --cached
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbi = rebase --interactive
+  rbs = rebase --skip
+  sba = submodule add
+  sbs = submodule status
+  sbi = submodule init
+  sbd = submodule deinit
+  sbu = submodule update
+  sbs = submodule sync
+  sbf = submodule foreach
+  snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"

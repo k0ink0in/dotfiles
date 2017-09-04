@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+cd(){
+    if [ -n "$1" ]; then
+        builtin cd "$@" && ls -la --color=always
+    else
+        builtin cd ~ && ls -la --color=always
+    fi
+}
+
+# no more cd ../../../
+up(){
+    local d=""
+    limit=$1
+    for ((i=1 ; i <= limit ; i++))
+    do
+        d=$d/..
+        done
+    d=$(echo $d | sed 's/^\///')
+    if [ -z "$d" ]; then
+        d=..
+        fi
+    cd $d
+}
+
+# do sudo, or sudo the last command if no argument given
+s(){
+    if [[ $# == 0 ]]; then
+        sudo $(history -p '!!')
+    else
+        sudo "$@"
+    fi
+}
+
+# cd into the last changed directory
+cl(){
+    last_dir="$(ls -Frt | grep '/$' | tail -n1)"
+    if [ -d "$last_dir" ]; then
+        cd "$last_dir"
+        fi
+}
+
+# find <dir> <file name regexp> <file contents regexp>
+ff(){
+    find ./ -iname "$2" ;
+}
+
+fe(){
+    find "$1" -iname "$2" -exec grep -H "$3" "{}" \;
+}
+
+getip(){
+    /sbin/ifconfig ${1:-eth0} | awk '/inet addr/ {print $2}' | awk -F: '{print $2}';
+}
+
+gitflow(){
+    if [[ ( "$1" = "start" || "$1" = "end" ) && ( "$2" = "hotfix" || "$2" = "release" || "$2" = "feature" ) && "$3" ]]; then
+        if [ "$1" = "start" ]; then
+            case "$2" in
+               "hotfix") git co master && git cb "hotfix-$3" master
+               ;;
+               "release") git co develop && git cb "release-$3" develop
+               ;;
+               "feature") git co develop && git cb "feature-$3" develop
+               ;;
+            esac
+        else [ "$1" = "end" ]
+            case "$2" in
+               "hotfix") git co master && git mn "hotfix-$3" && git t "$3" && git ps && git pt && git co develop && git mn "hotfix-$3" && git ps
+               ;;
+               "release") git co master && git mn "release-$3" && git t "$3" && git ps && git pt && git co develop && git mn "release-$3" && git ps
+               ;;
+               "feature") git co develop && git mn "feature-$3" && git ps
+               ;;
+            esac
+        fi
+    else
+        echo "Use : gitflow [start|end] [hotfix|release|feature] [version|name]"
+    fi
+}

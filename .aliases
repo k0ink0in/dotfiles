@@ -1,0 +1,55 @@
+
+alias ls='ls -hF --color=always'  # add colors for filetype recognition
+alias ll='ls -la --color=always'
+alias la='ls -lA --color=always'
+alias lla='ls -lA --color=always'
+alias l='ls -CF --color=always'
+alias lr='ls -lR --color=always'
+alias lt='ls -ltr --color=always' # sort by date, most recent last
+alias lx='ls -lXB --color=always' # sort by extension
+alias lk='ls -lSr --color=always' # sort by size
+alias lc='ls -lcr --color=always' # sort by change time
+alias lu='ls -lur --color=always' # sort by access time
+alias lm='ls -al | more'
+alias grep='grep -Rin --color=always --exclude-dir=.svn --exclude-dir=cache --exclude-dir=ezoe --exclude-dir=ezjscore  --exclude-dir=ezie'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias c='clear'
+#alias atom='atom-beta'
+alias atom='atom . &'
+alias _='sudo'
+alias q='exit'
+alias h='history'
+alias j='jobs -l'
+alias ..='cd ..'
+alias ba='vim ~/.bashrc;source ~/.bashrc'
+alias du='du -kh'
+alias df='df -kTh'
+alias stat="echo ' ' && uname -a && echo ' '&& uptime &&echo ' '&& df && echo ' '"
+alias g='git'
+alias gf='gitflow'
+alias t='tail'
+alias tf='tail -f'
+alias mark='echo =================================================='
+alias hg='history | grep --color=always'
+alias hosts='sudo vim /etc/hosts'
+alias fuck='sudo $(history -p \!\!)'
+
+## dir shortcuts
+alias home='cd ~/'
+
+# misstip
+alias xs='cd'
+alias vf='cd'
+alias moer='more'
+alias moew='more'
+alias kk='ll'
+
+alias staging='ssh -p 42 kduplant@staging.maecia.com'
+alias inside='ssh -p 42 kduplant@inside.maecia.com'
+alias groupemarck='ssh -p 42 kduplant@groupemarck.maecia.com'
+alias webedia='ssh www-data@web1-intranet.webedia.fr'
+alias tecnifibre='ssh tecnifibreflags@52.16.51.236'
+alias iicm='ssh -p 42 kduplant@iicm-apache-1.maecia.com'
+alias iicm2='ssh -p 42 kduplant@iicm-apache-2.maecia.com'
