@@ -1,0 +1,75 @@
+! ===================
+!       urxvt
+! ===================
+URxvt*scrollBar:	   false
+URxvt*letterSpace:  	   -7
+URxvt.internalBorder:      10
+URxvt*font: 		   xft:DejaVu Sans:regular:size=11
+URxvt*boldFont:		   xft:DejaVu Sans:bold:ize=11
+URxvt*cursorBlink:         true
+URxvt.iso14755:		   false
+URxvt*utf8:		   true
+URxvt.keysym.C-equal:      resize-font:bigger
+URxvt.keysym.C-parenright: resize-font:smaller
+
+! =================
+!       Xft
+! =================
+Xft.dpi:          	96
+Xft.antialias:     	true
+Xft.rgba:               subpixel
+Xft.hinting:       	true
+Xft.hintstyle:		hintslight
+! Xft.lcdfilter:	lcddefault
+
+! ============
+!   Couleurs
+! ============
+*background: #1D1D26
+*foreground: #B3B3D4
+*secondary:  #535172
+*active:     #FFCC66
+!black
+*color0:     #1D1D26
+*color8:     #928374
+!red
+*color1:     #E20049
+*color9:     #E20049
+!green
+*color2:     #00F572
+*color10:    #00D965
+!yellow
+*color3:     #FFCC66
+*color11:    #D9AD57
+!blue
+*color4:     #00BFFF
+*color12:    #00A3D9
+!magenta
+*color5:     #FF3399
+*color13:    #BD2671
+!cyan
+*color6:     #7874A6
+*color14:    #535172
+!white
+*color7:     #F8F8F0
+*color15:    #B3B3AD
+
+! =================
+! rofi
+! =================
+#define background #1D1D26
+#define text       #B3B3D4
+#define active     #FFCC66
+
+rofi.fullscreen:        false
+rofi.color-enabled:     true
+rofi.separator-style: 	solid
+rofi.color-window:      argb:e81d1d26, active, active
+rofi.color-normal:      argb:0baa263, #535172, argb:01d1d26, argb:01d1d26, text
+rofi.color-active:      active, background, active, active, background
+rofi.color-urgent:      #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+rofi.font:		"SFNS Display" medium 12
+rofi.bw:                0
+rofi.padding:           10
+rofi.hide-scrollbar:    true
+rofi.lines:             15
