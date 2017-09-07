@@ -1,7 +1,7 @@
 [bar/top]
-monitor = eDP-1
+monitor = DVI-1
 width = 100%
-height = 25
+height = 20
 
 background = #21252B
 foreground = #ccffffff
@@ -22,6 +22,28 @@ modules-left = i3 mpd
 modules-center = date
 #modules-right = volume backlight wireless-network wired-network battery date
 modules-right = volume backlight wired-network cpu memory temperature battery powermenu
+
+[bar/top-right]
+monitor = DVI-0
+width = 100%
+height = 25
+
+background = #21252B
+foreground = #ccffffff
+
+line-color = ${bar/bottom.background}
+line-size = 14
+
+spacing = 2
+padding-right = 5
+module-margin = 4
+
+font-0 = NotoSans-Regular:size=8;-1
+font-1 = MaterialIcons:size=10;0
+font-2 = Termsynu:size=8:antialias=false;-2
+font-3 = FontAwesome:size=10;0
+
+modules-left = i3
 
 [bar/bottom]
 #monitor = DVI-1
@@ -62,29 +84,29 @@ reverse-scroll = false
 fuzzy-match = true
 format = <label-mode><label-state>
 label-mode-padding = 2
-label-focused = %index%  %icon%
-label-focused-foreground = #C36573
+label-focused = %index% %icon%
+label-focused-foreground = #aaff77
 label-focused-padding = 2
-label-unfocused = %index%  %icon%
+label-unfocused = %index% %icon%
 label-unfocused-padding = 2
 label-unfocused-foreground = #ff
-label-visible = %index%  %icon%
-label-visible-underline = #ff
+label-visible = %index% %icon%
 label-visible-padding = 2
-label-urgent = %index%  %icon%
+label-urgent = %index% %icon%
 label-urgent-foreground = #C36573
 label-urgent-background = #ff
 label-urgent-padding = 2
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
 
 [module/backlight]
 type = internal/xbacklight
